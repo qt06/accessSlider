@@ -1,0 +1,4 @@
+accessSlider
+============
+
+Slider accessible
