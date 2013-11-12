@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<!--[if lte IE 7]><html lang="fr" class="ie7 oldies"><![endif]-->
+<!--[if IE 8]><html lang="fr" class="ie8 oldies"><![endif]-->
+<!--[if IE 9]><html lang="fr" class="ie9"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="fr"><!--<![endif]-->
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0">
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+
+	<title>AccessSlider - Demo</title>
+
+	<!-- CSS : En production, regrouper & compresser les CSS -->
+	<link rel="stylesheet" media="all" href="https://raw.github.com/necolas/normalize.css/v1/normalize.css" />
+	<link rel="stylesheet" media="all" href="accessSlider.css" />
+
+	<!-- Modernizr http://modernizr.com/docs/#installing -->
+	<script src="//cdn.jsdelivr.net/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body>
+
+
+<h1>AccessSlider</h1>
+
+<main role="main">
+
+
+	<h2>Base</h2>
+
+
+	<div id="slider" data-accessslider="wrapper" class="accessslider">
+
+		<!-- "accessslider-count-X" remplacer le X par le nombre d'éléments du carousel -->
+		<ul data-accessslider="titles" class="accessslider-count-8">
+			<li><a href="#panel-id-1"><span>Le groupe Jouve</span></a></li>
+			<li><a href="#panel-id-2"><span>BPO/ITO</span></a></li>
+			<li><a href="#panel-id-3"><span>Services Éditoriaux</span></a></li>
+			<li><a href="#panel-id-4"><span>IT Solutions</span></a></li>
+			<li><a href="#panel-id-5"><span>Impression et Services Associés</span></a></li>
+			<li><a href="#panel-id-6"><span>Innovation</span></a></li>
+			<li><a href="#panel-id-7"><span>Lorem Ipsum</span></a></li>
+			<li><a href="#panel-id-8"><span>Lorem Exemple</span></a></li>
+		</ul>
+
+
+		<div id="panel-id-1" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/CCCCCC.png" alt="Le groupe Jouve"></a>
+		</div>
+
+		<div id="panel-id-2" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/EAC5AE.png" alt="BPO/ITO"></a>
+		</div>
+
+		<div id="panel-id-3" data-accessslider="slide" class="accessslider-slide" data-accessslider-active-slide="true">
+			<a href="#"><img src="http://placehold.it/643x336/E4EA9C.png" alt="Le groupe Jouve"></a>
+		</div>
+
+		<div id="panel-id-4" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/AAEAA1.png" alt="Le groupe Jouve"></a>
+		</div>
+
+		<div id="panel-id-5" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/C5D2EA.png" alt="Le groupe Jouve"></a>
+		</div>
+
+		<div id="panel-id-6" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/B3AAEA.png" alt="Le groupe Jouve"></a>
+		</div>
+
+		<div id="panel-id-7" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/EAC5E4.png" alt="Le groupe Jouve"></a>
+		</div>
+
+		<div id="panel-id-8" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/EAB3BB.png" alt="Le groupe Jouve"></a>
+		</div>
+
+	</div><!--/accessslider-wrapper-->
+
+</main>
+
+<!-- Scripts : Placés en fin de page pour de meilleures performances -->
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="jquery.accessSlider.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		// Slider
+		if( $.fn.accessSlider )
+			$('#slider').accessSlider({
+				auto: true,
+				delay: 1000
+			});
+
+	}); // /ready
+</script>
+
+
+</body>
+</html>

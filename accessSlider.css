@@ -1,0 +1,39 @@
+
+/* ==========================================================================
+   AccesSlider core
+   ========================================================================== */
+
+.js [data-accessslider="slide"] {
+	display: none;
+}
+
+.js .accessslider .accessslider-active-slide {
+	display: block;
+}
+
+
+/* ==========================================================================
+   AccesSlider theme
+   ========================================================================== */
+
+.accessslider {
+	position: relative;
+	margin: 1em 0;
+}
+
+ul[data-accessslider="titles"] {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 273px;
+	float: right;
+}
+
+.accessslider-active-slide {}
+
+.accessslider-active-title {
+	font-weight: bold;
+}
+
+
+
