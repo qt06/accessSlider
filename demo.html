@@ -15,6 +15,16 @@
 	<link rel="stylesheet" media="all" href="https://raw.github.com/necolas/normalize.css/v1/normalize.css" />
 	<link rel="stylesheet" media="all" href="accessSlider.css" />
 
+	<style>
+		.accessslider-wrapper {
+			width: 900px;
+			padding: 1em;
+			border: 1px solid grey;
+		}
+
+	</style>
+
+
 	<!-- Modernizr http://modernizr.com/docs/#installing -->
 	<script src="//cdn.jsdelivr.net/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -27,22 +37,17 @@
 
 <main role="main">
 
+	<div class="accessslider-wrapper">
 
-	<h2>Base</h2>
+	<div id="slider" class="accessslider">
 
-
-	<div id="slider" data-accessslider="wrapper" class="accessslider">
-
-		<!-- "accessslider-count-X" remplacer le X par le nombre d'éléments du carousel -->
-		<ul data-accessslider="titles" class="accessslider-count-8">
+		<ul data-accessslider="titles">
 			<li><a href="#panel-id-1"><span>Le groupe Jouve</span></a></li>
 			<li><a href="#panel-id-2"><span>BPO/ITO</span></a></li>
 			<li><a href="#panel-id-3"><span>Services Éditoriaux</span></a></li>
 			<li><a href="#panel-id-4"><span>IT Solutions</span></a></li>
 			<li><a href="#panel-id-5"><span>Impression et Services Associés</span></a></li>
 			<li><a href="#panel-id-6"><span>Innovation</span></a></li>
-			<li><a href="#panel-id-7"><span>Lorem Ipsum</span></a></li>
-			<li><a href="#panel-id-8"><span>Lorem Exemple</span></a></li>
 		</ul>
 
 
@@ -70,15 +75,9 @@
 			<a href="#"><img src="http://placehold.it/643x336/B3AAEA.png" alt="Le groupe Jouve"></a>
 		</div>
 
-		<div id="panel-id-7" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/EAC5E4.png" alt="Le groupe Jouve"></a>
-		</div>
+	</div><!--/accessslider-->
 
-		<div id="panel-id-8" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/EAB3BB.png" alt="Le groupe Jouve"></a>
-		</div>
-
-	</div><!--/accessslider-wrapper-->
+</div><!--/accessslider-wrapper-->
 
 </main>
 
@@ -93,7 +92,10 @@
 		if( $.fn.accessSlider )
 			$('#slider').accessSlider({
 				auto: true,
-				delay: 1000
+				delay: 1000,
+				pauseButton: true,
+				pauseButtonLabel: 'Arrêter',
+				playButtonLabel: 'Relancer'
 			});
 
 	}); // /ready

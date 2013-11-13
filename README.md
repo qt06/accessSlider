@@ -36,7 +36,7 @@ Plugin jQuery - Slider accessible
 
 ```html
 
-<div id="slider" data-accessslider="wrapper" class="accessslider">
+<div id="slider" class="accessslider">
 
 	<!-- "accessslider-count-X" remplacer le X par le nombre d'éléments du carousel -->
 	<ul data-accessslider="titles" class="accessslider-count-8">
@@ -86,3 +86,14 @@ $(document).ready(function() {
 ### 4. Options
 
 * **data-accessslider-active-slide** : Slide affiché au chargement (défaut : 1ère slide)
+* **delay** : Durée des slides (défaut : 5000 (ms))
+* **auto** : Défilement automatique (défaut : false)
+* **pauseButton** : Affiche un bouton pause/lecture pour le mode automatique (défaut : false)
+* **pauseButtonLabel** : Contenu du bouton pause (défaut : "Arrêter")
+* **playButtonLabel** : Contenu du bouton lecture (défaut : "Relancer")
+
+### 5. Méthodes
+
+* **onShow** : Déclenchée à l'affichage d'un slide
+* **onPause** : Déclenchée au survol d'un slide
+* **onPlay** : Déclenchée en quittant le survol d'un slide

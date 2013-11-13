@@ -18,22 +18,68 @@
 
 .accessslider {
 	position: relative;
-	margin: 1em 0;
+	margin: 0;
+	background: #efefef;
 }
 
+
+
+
+/* Button */
+.accessslider-play-state {
+	position: absolute;
+	bottom: 10px;
+	right: 266px;
+	width: 100px;
+	margin: 0;
+	padding: 0.3em 1em;
+	border: none;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+}
+
+
+/* Titles */
 ul[data-accessslider="titles"] {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	width: 273px;
+	width: 257px;
 	float: right;
+	background: #dedede;
 }
-
-.accessslider-active-slide {}
-
+ul[data-accessslider="titles"] > li {
+	border-top: 1px solid #555;
+	outline: none;
+}
+ul[data-accessslider="titles"] > li:first-child {
+	border-top: none;
+}
+ul[data-accessslider="titles"] a {
+	display: block;
+	padding: 0.5em 1em;
+	outline: none;
+	text-decoration: none;
+}
+ul[data-accessslider="titles"] > li:focus a,
+ul[data-accessslider="titles"] a:hover {
+	background: #fff;
+}
 .accessslider-active-title {
 	font-weight: bold;
 }
 
 
+/* Slide */
+.accessslider-slide {
+	width: 643px;
+}
+.accessslider-active-slide {}
 
+.accessslider-slide a {
+	display: block;
+}
+.accessslider-slide img {
+	display: block;
+}

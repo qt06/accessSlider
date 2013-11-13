@@ -11,11 +11,10 @@
     var defaults = {
       delay: 5000,
       auto: false,
-      pauseButton: true,
+      pauseButton: false,
       pauseButtonLabel: 'Arrêter',
       playButtonLabel: 'Relancer',
       onShow: function () {},
-      onHide: function () {},
       onPlay: function () {},
       onPause: function () {}
     };
@@ -68,6 +67,7 @@
         .addClass('accessslider-active-slide');
 
       plugin.settings.activeSlideIndex = slideIndex;
+      plugin.settings.onShow(slideIndex);
 
     };
 
@@ -96,6 +96,10 @@
 
     // Initialiser le widget
     var initWidget = function () {
+
+      // Ajouter une classe indiquant le nombre de slides
+      $element.addClass('accessslider-count-' + plugin.settings.slidesCount);
+
 
       // Générer le bouton "pause"
       if (plugin.settings.pauseButton) {
@@ -234,7 +238,8 @@
 
 
       // Activer un slide
-      plugin.settings.$titles.bind('click', function () {
+      plugin.settings.$titles.bind('click', function (event) {
+        event.preventDefault();
         plugin.activeSlide($(this).index());
         setAuto(false);
       });
