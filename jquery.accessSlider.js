@@ -14,6 +14,8 @@
       pauseButton: false,
       pauseButtonLabel: 'Arrêter',
       playButtonLabel: 'Relancer',
+      count: false,
+      transition: 'from-top',
       onShow: function () {},
       onPlay: function () {},
       onPause: function () {}
@@ -49,13 +51,24 @@
     // Appel : $('.x').data('newsSlider').activeSlide( item )
     plugin.activeSlide = function (slideIndex) {
 
-      // Désactiver l'élément précédent
+      // Désactiver le slide actif
       plugin.settings.$titles
         .removeClass('accessslider-active-title');
 
       plugin.settings.$slides
+        .removeClass('accessslider-prev-slide');
+
+      plugin.settings.$slides.filter('.accessslider-active-slide')
+        .addClass('accessslider-prev-slide');
+
+      plugin.settings.$slides
         .removeAttr('data-accessslider-active-slide')
-        .removeClass('accessslider-active-slide');
+        .removeClass('accessslider-active-slide')
+        .removeClass('accessslider-next');
+
+      orderSlides( plugin.settings.activeSlideIndex );
+
+      // Activer le slide
 
       // Activer le titre
       plugin.settings.$titles.eq(slideIndex)
@@ -64,9 +77,21 @@
       // Activer le slide
       plugin.settings.$slides.eq(slideIndex)
         .attr('data-accessslider-active-slide', true)
+        .css('zIndex', plugin.settings.slidesCount)
         .addClass('accessslider-active-slide');
 
-      plugin.settings.activeSlideIndex = slideIndex;
+      plugin.settings.activeSlideIndex = parseInt(slideIndex);
+
+
+      // Décaler la slide suivante
+      var nextSlideIndex = plugin.settings.activeSlideIndex + 1;
+      if( nextSlideIndex >= plugin.settings.slidesCount )
+        nextSlideIndex = 0;
+
+      plugin.settings.$slides.eq(nextSlideIndex)
+        .addClass('accessslider-next');
+
+      updateSlideNum(slideIndex);
       plugin.settings.onShow(slideIndex);
 
     };
@@ -98,7 +123,17 @@
     var initWidget = function () {
 
       // Ajouter une classe indiquant le nombre de slides
-      $element.addClass('accessslider-count-' + plugin.settings.slidesCount);
+      $element
+        .addClass('accessslider-count-' + plugin.settings.slidesCount)
+        .addClass('accessslider-transition-' + plugin.settings.transition);
+
+
+      // Appliquer la profondeur aux slides
+      plugin.settings.$slides.each(function(index) {
+        $(this)
+          .css('zIndex', plugin.settings.slidesCount - index)
+          .attr('data-accessslider-index', index);
+      });
 
 
       // Générer le bouton "pause"
@@ -115,27 +150,43 @@
       setAuto(plugin.settings.auto);
 
 
+      // Générer l'affichage du nombre
+      if (plugin.settings.count) {
+        $element.prepend('<div class="accessslider-slide-count"><span class="accessslider-slide-num"></span>/<span class="accessslider-slide-total">' + plugin.settings.slidesCount + '</span></div>');
+      }
+
+
       // Afficher le slide actif (active-slide), par défaut, le premier
-      var $activeSlide = plugin.settings.$slides.filter('div[data-accessslider-active-slide="true"]');
-      if (!$activeSlide.length) { $activeSlide = plugin.settings.$slides.first(); }
+      var activeSlideIndex = plugin.settings.$slides.filter('div[data-accessslider-active-slide="true"]').attr('data-accessslider-index');
+      if (activeSlideIndex)
+        plugin.settings.activeSlideIndex = activeSlideIndex;
 
-      $activeSlide
-        .addClass('accessslider-active-slide')
-        .attr('data-accessslider-active-slide', 'true');
-
-
-      // Activer le titre actif
-      var activeSlideIndex = $activeSlide.prevAll('div').length;
-      var $activeTitle = plugin.settings.$titles.eq($activeSlide.prevAll('div').length);
-      plugin.settings.activeSlideIndex = activeSlideIndex;
-
-      $activeTitle
-        .attr('aria-selected', 'true')
-        .addClass('accessslider-active-title')
-        .attr('tabindex', '0');
+      plugin.activeSlide( plugin.settings.activeSlideIndex );
 
     };
 
+
+    // Mettre à jour le numéro de slide
+    var updateSlideNum = function(slideIndex) {
+      $element.find('.accessslider-slide-num').text( parseInt(slideIndex) + 1 );
+    };
+
+
+    // Réordonner les slides
+    var orderSlides = function( activeSlideIndex ) {
+
+      plugin.settings.$slides.each(function(i) {
+
+        var zIndex = plugin.settings.slidesCount - activeSlideIndex + i - 1;
+
+        if( i > activeSlideIndex )
+          var zIndex = plugin.settings.slidesCount - activeSlideIndex - i + 1;
+
+        $(this).css('zIndex', zIndex);
+
+      });
+
+    };
 
 
 
@@ -286,8 +337,9 @@
 
       plugin.settings.$titlesList = $element.find('> ul[data-accessslider="titles"]');
       plugin.settings.$titles = plugin.settings.$titlesList.find('> li');
-      plugin.settings.$slides = $element.find('> div[data-accessslider="slide"]');
+      plugin.settings.$slides = $element.find('div[data-accessslider="slide"]');
       plugin.settings.slidesCount = plugin.settings.$slides.length;
+      plugin.settings.activeSlideIndex = 0;
       plugin.settings.keyboard = {};
 
       setARIA();

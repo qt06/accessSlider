@@ -7,16 +7,18 @@ Plugin jQuery - Slider accessible
 * Slides affichées sans JavaScript
 * ARIA
 * Gestion du clavier
- * Flèche pour déplacer le focus
- * Entrée pour afficher
+ * _Flèche_ pour déplacer le focus
+ * _Entrée_ pour afficher
 * Mise en pause au survol & au clic sur un titre
 
 
 ## Compatibilité
 
-* IE7+
+* IE7+ (Les transitions sont gérées à partir d'IE9)
 * Chrome
 * Firefox
+
+
 
 
 ## Installation
@@ -88,9 +90,11 @@ $(document).ready(function() {
 * **data-accessslider-active-slide** : Slide affiché au chargement (défaut : 1ère slide)
 * **delay** : Durée des slides (défaut : 5000 (ms))
 * **auto** : Défilement automatique (défaut : false)
-* **pauseButton** : Affiche un bouton pause/lecture pour le mode automatique (défaut : false)
+* **pauseButton** : Afficher un bouton pause/lecture pour le mode automatique (défaut : false)
 * **pauseButtonLabel** : Contenu du bouton pause (défaut : "Arrêter")
 * **playButtonLabel** : Contenu du bouton lecture (défaut : "Relancer")
+* **count** : Afficher "numéro de slide / total" (défaut : "false")
+* **transition** : Sens de la transition (défaut : "from-top", options : form-right, form-bottom, form-left)
 
 ### 5. Méthodes
 

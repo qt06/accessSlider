@@ -51,29 +51,33 @@
 		</ul>
 
 
-		<div id="panel-id-1" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/CCCCCC.png" alt="Le groupe Jouve"></a>
-		</div>
+		<div class="accessslider-slides">
 
-		<div id="panel-id-2" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/EAC5AE.png" alt="BPO/ITO"></a>
-		</div>
+			<div id="panel-id-1" data-accessslider="slide" class="accessslider-slide">
+				<a href="#"><img src="http://placehold.it/643x336/CCCCCC.png" alt="Le groupe Jouve"></a>
+			</div>
 
-		<div id="panel-id-3" data-accessslider="slide" class="accessslider-slide" data-accessslider-active-slide="true">
-			<a href="#"><img src="http://placehold.it/643x336/E4EA9C.png" alt="Le groupe Jouve"></a>
-		</div>
+			<div id="panel-id-2" data-accessslider="slide" class="accessslider-slide">
+				<a href="#"><img src="http://placehold.it/643x336/EAC5AE.png" alt="BPO/ITO"></a>
+			</div>
 
-		<div id="panel-id-4" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/AAEAA1.png" alt="Le groupe Jouve"></a>
-		</div>
+			<div id="panel-id-3" data-accessslider="slide" class="accessslider-slide" data-accessslider-active-slide="true">
+				<a href="#"><img src="http://placehold.it/643x336/E4EA9C.png" alt="Le groupe Jouve"></a>
+			</div>
 
-		<div id="panel-id-5" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/C5D2EA.png" alt="Le groupe Jouve"></a>
-		</div>
+			<div id="panel-id-4" data-accessslider="slide" class="accessslider-slide">
+				<a href="#"><img src="http://placehold.it/643x336/AAEAA1.png" alt="Le groupe Jouve"></a>
+			</div>
 
-		<div id="panel-id-6" data-accessslider="slide" class="accessslider-slide">
-			<a href="#"><img src="http://placehold.it/643x336/B3AAEA.png" alt="Le groupe Jouve"></a>
-		</div>
+			<div id="panel-id-5" data-accessslider="slide" class="accessslider-slide">
+				<a href="#"><img src="http://placehold.it/643x336/C5D2EA.png" alt="Le groupe Jouve"></a>
+			</div>
+
+			<div id="panel-id-6" data-accessslider="slide" class="accessslider-slide">
+				<a href="#"><img src="http://placehold.it/643x336/B3AAEA.png" alt="Le groupe Jouve"></a>
+			</div>
+
+		</div><!--/accessslider-slides-->
 
 	</div><!--/accessslider-->
 
@@ -92,10 +96,12 @@
 		if( $.fn.accessSlider )
 			$('#slider').accessSlider({
 				auto: true,
-				delay: 1000,
+				delay: 5000,
 				pauseButton: true,
 				pauseButtonLabel: 'Arrêter',
-				playButtonLabel: 'Relancer'
+				playButtonLabel: 'Relancer',
+				count: true,
+				transition: 'from-right'
 			});
 
 	}); // /ready

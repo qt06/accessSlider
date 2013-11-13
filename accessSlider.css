@@ -4,11 +4,9 @@
    ========================================================================== */
 
 .js [data-accessslider="slide"] {
-	display: none;
-}
-
-.js .accessslider .accessslider-active-slide {
-	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 
@@ -20,9 +18,8 @@
 	position: relative;
 	margin: 0;
 	background: #efefef;
+	min-height: 336px;
 }
-
-
 
 
 /* Button */
@@ -37,6 +34,7 @@
 	background: #000;
 	color: #fff;
 	font-weight: bold;
+	z-index: 11;
 }
 
 
@@ -67,19 +65,93 @@ ul[data-accessslider="titles"] a:hover {
 	background: #fff;
 }
 .accessslider-active-title {
-	font-weight: bold;
+	background: #efefef;
 }
 
 
 /* Slide */
-.accessslider-slide {
+.accessslider-slides {
+	overflow: hidden;
 	width: 643px;
+	height: 336px;
+	position: relative;
 }
-.accessslider-active-slide {}
+
+.accessslider-slide {
+	background: #fff;
+}
+.accessslider-active-slide {
+}
 
 .accessslider-slide a {
 	display: block;
 }
+
 .accessslider-slide img {
 	display: block;
+}
+
+
+/* Count */
+.accessslider-slide-count {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 11;
+}
+
+
+
+/* Transitions */
+
+
+/* From top */
+.accessslider-transition-from-top .accessslider-slide {
+	-webkit-transform: translate3d(0, -336px, 0);
+	-ms-transform: translate3d(0, -336px, 0);
+	transform: translate3d(0, -336px, 0);
+}
+
+
+/* From right */
+.accessslider-transition-from-right .accessslider-slide {
+	-webkit-transform: translate3d(643px, 0, 0);
+	-ms-transform: translate3d(643px, 0, 0);
+	transform: translate3d(643px, 0, 0);
+}
+
+/* From bottom */
+.accessslider-transition-from-bottom .accessslider-slide {
+	-webkit-transform: translate3d(0, 336px, 0);
+	-ms-transform: translate3d(0, 336px, 0);
+	transform: translate3d(0, 336px, 0);
+}
+
+/* From left */
+.accessslider-transition-from-left .accessslider-slide {
+	-webkit-transform: translate3d(-643px, 0, 0);
+	-ms-transform: translate3d(-643px, 0, 0);
+	transform: translate3d(-643px, 0, 0);
+}
+
+
+
+
+
+.accessslider-slides .accessslider-active-slide {
+	-webkit-transition: -webkit-transform 1s ease;
+	-moz-transition: -moz-transform 1s ease;
+	-o-transition: -o-transform 1s ease;
+	transition: transform 1s ease;
+
+	-webkit-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.accessslider-slides .accessslider-prev-slide {
+	-webkit-transition: -webkit-transform 3s ease;
+	-moz-transition: -moz-transform 3s ease;
+	-o-transition: -o-transform 3s ease;
+	transition: transform 3s ease;
 }
