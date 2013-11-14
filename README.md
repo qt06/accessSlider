@@ -18,6 +18,8 @@ Plugin jQuery - Slider accessible
 * Chrome
 * Firefox
 
+* Testé sur Jquery 1.7
+
 
 
 
@@ -52,18 +54,21 @@ Plugin jQuery - Slider accessible
 		<li><a href="#panel-id-8"><span>Lorem Exemple</span></a></li>
 	</ul>
 
+	<div class="accessslider-slides">
 
-	<div id="panel-id-1" data-accessslider="slide" class="accessslider-slide">
-		<a href="#"><img src="http://placehold.it/643x336/CCCCCC.png" alt="Text"></a>
-	</div>
+		<div id="panel-id-1" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/CCCCCC.png" alt="Text"></a>
+		</div>
 
-	<div id="panel-id-2" data-accessslider="slide" class="accessslider-slide">
-		<a href="#"><img src="http://placehold.it/643x336/EAC5AE.png" alt="Text"></a>
-	</div>
+		<div id="panel-id-2" data-accessslider="slide" class="accessslider-slide">
+			<a href="#"><img src="http://placehold.it/643x336/EAC5AE.png" alt="Text"></a>
+		</div>
 
-	<div id="panel-id-3" data-accessslider="slide" class="accessslider-slide" data-accessslider-active-slide="true">
-		<a href="#"><img src="http://placehold.it/643x336/E4EA9C.png" alt="Text"></a>
-	</div>
+		<div id="panel-id-3" data-accessslider="slide" class="accessslider-slide" data-accessslider-active-slide="true">
+			<a href="#"><img src="http://placehold.it/643x336/E4EA9C.png" alt="Text"></a>
+		</div>
+
+	</div><!--/accessslider-slides-->
 
 </div><!--/accessslider-wrapper-->
 ```

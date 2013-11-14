@@ -36,6 +36,12 @@
 	font-weight: bold;
 	z-index: 11;
 }
+.accessslider-play-state:hover,
+.accessslider-play-state:focus,
+.accessslider-play-state:active {
+	background: #333;
+	outline: none;
+}
 
 
 /* Titles */

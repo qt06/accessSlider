@@ -58,30 +58,43 @@
       plugin.settings.$slides
         .removeClass('accessslider-prev-slide');
 
-      plugin.settings.$slides.filter('.accessslider-active-slide')
+      var $prevActiveSlide = plugin.settings.$slides.filter('.accessslider-active-slide');
+      $prevActiveSlide
         .addClass('accessslider-prev-slide');
+
+      removeTabIndexIn($prevActiveSlide);
 
       plugin.settings.$slides
         .removeAttr('data-accessslider-active-slide')
         .removeClass('accessslider-active-slide')
         .removeClass('accessslider-next');
 
-      orderSlides( plugin.settings.activeSlideIndex );
 
       // Activer le slide
+
 
       // Activer le titre
-      plugin.settings.$titles.eq(slideIndex)
+      var $activeTitle = plugin.settings.$titles.eq(slideIndex)
+
+      $activeTitle
         .addClass('accessslider-active-title');
 
+      setTitleFocusable($activeTitle);
+
+
       // Activer le slide
-      plugin.settings.$slides.eq(slideIndex)
+      var $activeSlide = plugin.settings.$slides.eq(slideIndex);
+
+      $activeSlide
         .attr('data-accessslider-active-slide', true)
         .css('zIndex', plugin.settings.slidesCount)
         .addClass('accessslider-active-slide');
 
+
+      setSlideFocusable($activeSlide);
       plugin.settings.activeSlideIndex = parseInt(slideIndex);
 
+      orderSlides( plugin.settings.activeSlideIndex );
 
       // Décaler la slide suivante
       var nextSlideIndex = plugin.settings.activeSlideIndex + 1;
@@ -131,7 +144,6 @@
       // Appliquer la profondeur aux slides
       plugin.settings.$slides.each(function(index) {
         $(this)
-          .css('zIndex', plugin.settings.slidesCount - index)
           .attr('data-accessslider-index', index);
       });
 
@@ -177,10 +189,12 @@
 
       plugin.settings.$slides.each(function(i) {
 
-        var zIndex = plugin.settings.slidesCount - activeSlideIndex + i - 1;
+        if( i == activeSlideIndex)
+          return;
 
+        var zIndex = plugin.settings.slidesCount + i - activeSlideIndex;
         if( i > activeSlideIndex )
-          var zIndex = plugin.settings.slidesCount - activeSlideIndex - i + 1;
+          zIndex = plugin.settings.slidesCount - i + activeSlideIndex;
 
         $(this).css('zIndex', zIndex);
 
@@ -231,9 +245,12 @@
 
 
       plugin.settings.$slides.attr({
-        'role':     'tabpanel'
-      });
+        'role': 'tabpanel'
+      }).each(function () {
 
+        removeTabIndexIn($(this));
+
+      });
 
       plugin.settings.$titlesList.attr({
         'role' : 'tablist'
@@ -246,6 +263,7 @@
 
         $this.attr({
           'role': 'tab',
+          'tabindex' : '-1',
           'aria-selected': 'false',
           'aria-controls': $this.find('a').attr('href').replace('#', '')
         })
@@ -260,16 +278,39 @@
     // Déplacer le focus
     var applyFocusTo = function ($focusedElmt, direction) {
 
-      var $focusTarget = (direction === 'next') ? $focusedElmt.next() : $focusedElmt.prev();
+      // Activer le focus sur l'élément
+      var $focusTarget = $focusedElmt;
+
+      if (direction)
+        $focusTarget = (direction === 'next') ? $focusedElmt.next() : $focusedElmt.prev();
+
+      setTitleFocusable($focusTarget);
 
       $focusTarget
-        .attr('tabindex', '0')
         .focus();
 
-      $focusedElmt
-        .attr('tabindex', '-1');
+    };
+
+
+    var setTitleFocusable = function ($el) {
+
+      // Supprimer le focus actuel
+      plugin.settings.$titles.attr('tabindex', '-1');
+
+      // Rendre focusable l'élément
+      $el.attr('tabindex', '0');
 
     };
+
+
+    var removeTabIndexIn = function ($wrapper) {
+      $wrapper.find('a, button').attr('tabIndex', '-1');
+    };
+
+    var setSlideFocusable = function ($slide) {
+      $slide.find('a, button').attr('tabIndex', '0');
+    };
+
 
 
     var setEvents = function () {
