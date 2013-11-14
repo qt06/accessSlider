@@ -14,7 +14,7 @@ Plugin jQuery - Slider accessible
 
 ## Compatibilité
 
-* IE7+ (Les transitions sont gérées à partir d'IE9)
+* IE7+ (Les transitions sont dégradée sous IE)
 * Chrome
 * Firefox
 
